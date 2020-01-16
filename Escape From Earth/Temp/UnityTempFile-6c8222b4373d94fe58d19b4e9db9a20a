@@ -292,6 +292,6 @@
 /define:ENABLE_LEGACY_INPUT_MANAGER
 /define:CSHARP_7_OR_LATER
 /define:CSHARP_7_3_OR_NEWER
-"Assets/Scenes/DialogueManager.cs"
 "Assets/Scripts/Dialogue.cs"
+"Assets/Scripts/Dialogue/DialogueComponent.cs"
 "Assets/Scripts/SceneLoader.cs"
