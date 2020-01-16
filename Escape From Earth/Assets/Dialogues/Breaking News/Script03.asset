@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e7d940d006b3a46ca9ab5ca105363d5a, type: 3}
-  m_Name: Script00
+  m_Name: Script03
   m_EditorClassIdentifier: 
-  dialogueText: 'Clint Stinkwood: Good afternoon ladies and gentlemen, I''m Clint
-    Stinkwood and I''m here in Los Angeles, at The News Show studio, a few miles away
-    from the launch site of the Savior space shuttle.'
-  nextDialogue: {fileID: 11400000, guid: b08b244ebcfcb4908bd6f6baddc13110, type: 2}
+  dialogueText: 'Clint Stinkwood: After many years of trying to study and inventions,
+    we are finally ready for the human race to make the epic journey to Mars on the
+    Savior, where we will rebuild our civilization.'
+  nextDialogue: {fileID: 0}

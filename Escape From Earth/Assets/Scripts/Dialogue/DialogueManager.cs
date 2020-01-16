@@ -18,6 +18,7 @@ public class DialogueManager : MonoBehaviour
     string currentText = "";
     string displayText = "";
     int textIndex = 0;
+    bool spittingDialogue = true;
 
 
     // Start is called before the first frame update
@@ -25,16 +26,29 @@ public class DialogueManager : MonoBehaviour
     {
         if (firstDialogue != null)
         {
-            currentDialogue = firstDialogue;
+            SetDialogue(firstDialogue);
             UpdateUI();
-            InvokeRepeating("UpdateTextLength", 0f, charactersPerSecond);
+        } else
+        {
+            DialogueFinished();
+            Debug.LogWarning("No Dialogue was inputed, here is null object.", firstDialogue);
         }
     }
 
     void Update()
     {
         UpdateUI();
+        HandleInput();
+    }
 
+    void SetDialogue(Dialogue dialogueToSet)
+    {
+        currentDialogue = dialogueToSet;
+        currentText = currentDialogue.GetDialogueText();
+        displayText = "";
+        textIndex = 0;
+        spittingDialogue = true;
+        InvokeRepeating("UpdateTextLength", 0f, charactersPerSecond);
     }
 
     void UpdateUI()
@@ -47,14 +61,23 @@ public class DialogueManager : MonoBehaviour
         if(textIndex < currentText.Length) {
             displayText += currentText[textIndex];
             textIndex ++;
+        } else {
+            spittingDialogue = false;
+            CancelInvoke();
         }
     }
 
-    void SetDialogue(Dialogue dialogueToSet) {
-        currentDialogue = dialogueToSet;
-        currentText = currentDialogue.GetDialogueText();
-        displayText = "";
-        textIndex = 0;
+    void HandleInput() {
+        if(Input.GetMouseButtonUp(0) || Input.GetKeyUp("space")) {
+            Debug.Log("Something was pressed");
+            if(spittingDialogue) {
+                spittingDialogue = false;
+                CancelInvoke();
+                displayText = currentText;
+            } else {
+                NextText();
+            }
+        }
     }
 
     void NextText()
@@ -66,8 +89,13 @@ public class DialogueManager : MonoBehaviour
         }
         else
         {
-
+            DialogueFinished();
         }
     }
+
+    void DialogueFinished() {
+        // TODO: Implement way to notify that the end has happened
+    }
+
 
 }
