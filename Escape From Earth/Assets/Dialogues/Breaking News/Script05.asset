@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueText: 'Clint Stinkwood: I''m Clint Stinkwood on channel 953.673B, The News
     Show, and I''ll see you next time on the planet Mars.'
-  nextDialogue: {fileID: 0}
+  nextDialogue: {fileID: 11400000, guid: e1f7e6e04b2e8494fbb284aab9110c55, type: 2}

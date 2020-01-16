@@ -15,4 +15,4 @@ MonoBehaviour:
   dialogueText: 'Clint Stinkwood: After many years of trying to study and inventions,
     we are finally ready for the human race to make the epic journey to Mars on the
     Savior, where we will rebuild our civilization.'
-  nextDialogue: {fileID: 0}
+  nextDialogue: {fileID: 11400000, guid: be67d3b5591c84265a4d337bcada35df, type: 2}

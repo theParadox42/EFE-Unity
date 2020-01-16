@@ -10,8 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e7d940d006b3a46ca9ab5ca105363d5a, type: 3}
-  m_Name: Script05
+  m_Name: Script06
   m_EditorClassIdentifier: 
-  dialogueText: 'Clint Stinkwood: I''m Clint Stinkwood on channel 953.673B, The News
-    Show, and I''ll see you next time on the planet Mars.'
+  dialogueText: PLEASE NOTE THAT ANYONE NOT ON THE SAVIOR BY THE ALL ABOARD TIME WILL
+    BE LEFT BEHIND. IF YOU HAVE NOT YET ENTERED THE SHUTTLE, PLEASE GET YOU AND YOUR
+    FAMILY MEMBERS ONTO IT AS SOON AS POSSIBLE.
   nextDialogue: {fileID: 0}

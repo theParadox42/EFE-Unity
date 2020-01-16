@@ -120,38 +120,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &73443954 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8880309606587295911, guid: 840691ed7f0554ad0b876dd0cabf6edb,
-    type: 3}
-  m_PrefabInstance: {fileID: 471697957346098938}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &73443956 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3856023970415188960, guid: 840691ed7f0554ad0b876dd0cabf6edb,
-    type: 3}
-  m_PrefabInstance: {fileID: 471697957346098938}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 73443954}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9541d86e2fd84c1d9990edf0852d74ab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &73443960
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 73443954}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e9c47a1132ccb48c488a1220b637097a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  firstDialogue: {fileID: 11400000, guid: d8ea6057a9b0e4a558f776247ffc7ce3, type: 2}
-  storyText: {fileID: 73443956}
 --- !u!1001 &471697957346098938
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -223,43 +191,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 3856023970415188960, guid: 840691ed7f0554ad0b876dd0cabf6edb,
-        type: 3}
-      propertyPath: m_text
-      value: 'Breaking News!
-
-'
-      objectReference: {fileID: 0}
-    - target: {fileID: 3856023970415188960, guid: 840691ed7f0554ad0b876dd0cabf6edb,
-        type: 3}
-      propertyPath: m_fontSize
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3856023970415188960, guid: 840691ed7f0554ad0b876dd0cabf6edb,
-        type: 3}
-      propertyPath: m_textInfo.characterCount
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 3856023970415188960, guid: 840691ed7f0554ad0b876dd0cabf6edb,
-        type: 3}
-      propertyPath: m_textInfo.wordCount
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3856023970415188960, guid: 840691ed7f0554ad0b876dd0cabf6edb,
-        type: 3}
-      propertyPath: m_textInfo.lineCount
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3856023970415188960, guid: 840691ed7f0554ad0b876dd0cabf6edb,
-        type: 3}
-      propertyPath: m_textInfo.pageCount
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3856023970415188960, guid: 840691ed7f0554ad0b876dd0cabf6edb,
-        type: 3}
-      propertyPath: m_textInfo.spaceCount
-      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 840691ed7f0554ad0b876dd0cabf6edb, type: 3}

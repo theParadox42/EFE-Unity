@@ -15,4 +15,4 @@ MonoBehaviour:
   dialogueText: 'Clint Stinkwood: It''s been a long and hard journey to get to this
     point, the human race is no longer capable of remaining here on earth with all
     of the toxic waste that has filled our streets and cities.'
-  nextDialogue: {fileID: 0}
+  nextDialogue: {fileID: 11400000, guid: 44f98374c4a794df2b1f013d6ab1c051, type: 2}
