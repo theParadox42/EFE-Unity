@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7d940d006b3a46ca9ab5ca105363d5a, type: 3}
+  m_Name: News02
+  m_EditorClassIdentifier: 
+  dialogueText: 'Clint Stinkwood: It''s been a long and hard journey to get to this
+    point, the human race is no longer capable of remaining here on earth with all
+    of the toxic waste that has filled our streets and cities.'
+  nextDialogue: {fileID: 11400000, guid: 44f98374c4a794df2b1f013d6ab1c051, type: 2}

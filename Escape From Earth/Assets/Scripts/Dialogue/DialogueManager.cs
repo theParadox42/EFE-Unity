@@ -17,22 +17,37 @@ public class DialogueManager : MonoBehaviour
     // TMP Component
     [SerializeField] TextMeshPro storyText = null;
 
-    // Text Stuff
+    // Management Settings
     [SerializeField] float charactersPerSecond = 0.1f;
+    [SerializeField] bool automaticallyStart = true;
+    bool on = true;
+    
+    // Text Stuff
     string currentText = "";
     string displayText = "";
     int textIndex = 0;
     bool spittingDialogue = true;
 
 
+    public void StartDialogue() {
+        InitializeDialogue();
+    }
+
     // Start is called before the first frame update
     void Start()
-    {
-        if (firstDialogue != null)
+    {   
+        if(automaticallyStart) InitializeDialogue();
+        else 
         {
-            SetDialogue(firstDialogue);
+            displayText = "";
             UpdateUI();
-        } else
+            on = false;
+        }
+    }
+
+    void InitializeDialogue(){
+        if (firstDialogue != null) SetDialogue(firstDialogue);
+        else
         {
             DialogueFinished();
             Debug.LogWarning("No Dialogue was inputed, here is null object.", firstDialogue);
@@ -41,12 +56,15 @@ public class DialogueManager : MonoBehaviour
 
     void Update()
     {
-        UpdateUI();
-        HandleInput();
+        if (on) {
+            UpdateUI();
+            HandleInput();
+        }
     }
 
     void SetDialogue(Dialogue dialogueToSet)
     {
+        on = true;
         currentDialogue = dialogueToSet;
         currentText = currentDialogue.GetDialogueText();
         displayText = "";
@@ -85,10 +103,9 @@ public class DialogueManager : MonoBehaviour
 
     void NextText()
     {
-        Dialogue newDialogue = currentDialogue.GetNextDialogue();
-        if (newDialogue != null)
+        if (currentDialogue.GetNextDialogue() != null)
         {
-            SetDialogue(newDialogue);
+            SetDialogue(currentDialogue.GetNextDialogue());
         }
         else
         {
@@ -97,6 +114,9 @@ public class DialogueManager : MonoBehaviour
     }
 
     void DialogueFinished() {
+        on = false;
+        displayText = "";
+        UpdateUI();
         if(dialogueDelegate != null && !sentSignal) {
             sentSignal = true;
             dialogueDelegate.DialogueEnded(this);
