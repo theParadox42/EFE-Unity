@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/Scenes/Cutscenes/Breaking_News.unity
+- path: Assets/Scenes/Game/RunToRocket.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0

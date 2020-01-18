@@ -6,7 +6,8 @@ enum WakeUpPlayerState {
     sleeping,
     gettingOutOfBed,
     dialogue,
-    leaving
+    leaving,
+    finished
 }
 
 public class BreakingNewsPlayer : DialogueDelegate
@@ -18,10 +19,12 @@ public class BreakingNewsPlayer : DialogueDelegate
     // Animation Stuff
     Animator animator;
 
-    // DialougeManager
+    // Dialouge Manager
     DialogueManager dialogueManager;
-    
 
+    // Scene Loader
+    [SerializeField] SceneLoader sceneLoader = null;
+    
     void Start() {
         animator = GetComponent<Animator>();
         dialogueManager = GetComponent<DialogueManager>();
@@ -33,12 +36,18 @@ public class BreakingNewsPlayer : DialogueDelegate
     }
 
     void Update() {
+        var animationState = animator.GetCurrentAnimatorStateInfo(0);
         switch(state) {
             case WakeUpPlayerState.gettingOutOfBed:
-                var animationState = animator.GetCurrentAnimatorStateInfo(0);
                 if(animationState.IsName("GetOutOfBed")) {
                     state = WakeUpPlayerState.dialogue;
                     dialogueManager.StartDialogue();
+                }
+            break;
+            case WakeUpPlayerState.leaving:
+                if(animationState.IsName("LeaveRight")) {
+                    state = WakeUpPlayerState.finished;
+                    sceneLoader.LoadNextScene();
                 }
             break;
         }
@@ -46,8 +55,9 @@ public class BreakingNewsPlayer : DialogueDelegate
 
     public override void DialogueEnded(DialogueManager dialogueManager)
     {
-        
+        state = WakeUpPlayerState.leaving;
+        animator.ResetTrigger("GetOutOfBed");
+        animator.SetTrigger("LeaveRight");
     }
-
 
 }

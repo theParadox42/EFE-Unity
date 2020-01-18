@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Cutscenes/Breaking_News.unity
     guid: 6a791ff1dcd3f45b0b289885dde5d0ba
+  - enabled: 1
+    path: Assets/Scenes/Game/RunToRocket.unity
+    guid: eccc5f9c5aa2a4014a3003c20879ac02
   m_configObjects: {}
