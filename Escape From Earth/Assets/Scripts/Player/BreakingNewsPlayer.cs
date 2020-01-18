@@ -17,10 +17,14 @@ public class BreakingNewsPlayer : DialogueDelegate
     
     // Animation Stuff
     Animator animator;
+
+    // DialougeManager
+    DialogueManager dialogueManager;
     
 
     void Start() {
         animator = GetComponent<Animator>();
+        dialogueManager = GetComponent<DialogueManager>();
     }
 
     public void StartScene() {
@@ -31,18 +35,10 @@ public class BreakingNewsPlayer : DialogueDelegate
     void Update() {
         switch(state) {
             case WakeUpPlayerState.gettingOutOfBed:
-                if(animator.GetCurrentAnimatorStateInfo(0).IsName("GetOutOfBed")) {
-                    Debug.Log("Currently get out of bed");
-                } else {
-                    // // Set position
-                    // var pos = transform.position;
-                    // transform.position = new Vector2(pos.x, -2.2f, pos.z);
-                    // // Set rotation
-                    // var rot = transform.rotation;
-                    // transform.rotation = new Vector3(rot.x, rot.y, 180);
-                    // // log
-                    // Debug.Log("Ok it worked");
-                    // TODO: Set transform to right position
+                var animationState = animator.GetCurrentAnimatorStateInfo(0);
+                if(animationState.IsName("GetOutOfBed")) {
+                    state = WakeUpPlayerState.dialogue;
+                    dialogueManager.StartDialogue();
                 }
             break;
         }

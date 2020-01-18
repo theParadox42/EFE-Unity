@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7d940d006b3a46ca9ab5ca105363d5a, type: 3}
   m_Name: News04
   m_EditorClassIdentifier: 
-  dialogueText: 'Clint Stinkwood: I''m Clint Stinkwood on channel 953.673B, The News
-    Show, and I''ll see you next time on the planet Mars.'
+  dialogueText: It's time to say goodbye to our once beautiful and colorful planet
+    earth, and make way for a new era of cleanliness and save living once again!
   nextDialogue: {fileID: 11400000, guid: 9158d652a92134347aa4d22dbe274ee8, type: 2}

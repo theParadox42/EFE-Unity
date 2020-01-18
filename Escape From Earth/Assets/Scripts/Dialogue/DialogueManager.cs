@@ -18,7 +18,7 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] TextMeshPro storyText = null;
 
     // Management Settings
-    [SerializeField] float charactersPerSecond = 0.1f;
+    [SerializeField] float charactersPerSecond = 0.05f;
     [SerializeField] bool automaticallyStart = true;
     bool on = true;
     

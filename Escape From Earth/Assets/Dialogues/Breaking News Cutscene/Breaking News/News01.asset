@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7d940d006b3a46ca9ab5ca105363d5a, type: 3}
   m_Name: News01
   m_EditorClassIdentifier: 
-  dialogueText: 'Clint Stinkwood: We''re just minutes away from the "All aboard" time,
-    at which point the Savior will close all it''s doors and prepare for launch.'
+  dialogueText: We're just minutes away from the "All aboard" time, at which point
+    the Savior will close all it's doors and prepare for launch.
   nextDialogue: {fileID: 11400000, guid: 1d51a8a047c394d23a651db476e69d56, type: 2}

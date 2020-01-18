@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7d940d006b3a46ca9ab5ca105363d5a, type: 3}
   m_Name: WakeUp01
   m_EditorClassIdentifier: 
-  dialogueText: I gotta go, I'm gonna be late?
+  dialogueText: I gotta go, I'm gonna be late!
   nextDialogue: {fileID: 11400000, guid: 9179cac8893c34011aa4fd27a7096598, type: 2}
