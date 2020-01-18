@@ -7,11 +7,15 @@ public class DialogueManager : MonoBehaviour
 {
 
     // Dialogue Management Objects
-    [SerializeField] Dialogue firstDialogue;
+    [SerializeField] Dialogue firstDialogue = null;
     Dialogue currentDialogue;
+    
+    // Delegate Methods
+    [SerializeField] DialogueDelegate dialogueDelegate = null;
+    bool sentSignal = false;
 
     // TMP Component
-    [SerializeField] TextMeshPro storyText;
+    [SerializeField] TextMeshPro storyText = null;
 
     // Text Stuff
     [SerializeField] float charactersPerSecond = 0.1f;
@@ -69,7 +73,6 @@ public class DialogueManager : MonoBehaviour
 
     void HandleInput() {
         if(Input.GetMouseButtonUp(0) || Input.GetKeyUp("space")) {
-            Debug.Log("Something was pressed");
             if(spittingDialogue) {
                 spittingDialogue = false;
                 CancelInvoke();
@@ -94,7 +97,10 @@ public class DialogueManager : MonoBehaviour
     }
 
     void DialogueFinished() {
-        // TODO: Implement way to notify that the end has happened
+        if(dialogueDelegate != null && !sentSignal) {
+            sentSignal = true;
+            dialogueDelegate.DialogueEnded(this);
+        }
     }
 
 
