@@ -10,7 +10,7 @@ enum WakeUpPlayerState {
     finished
 }
 
-public class BreakingNewsPlayer : DialogueDelegate
+public class BreakingNewsPlayer: MonoBehaviour, DialogueDelegate
 {
     
     // State Management
@@ -53,7 +53,7 @@ public class BreakingNewsPlayer : DialogueDelegate
         }
     }
 
-    public override void DialogueEnded(DialogueManager dialogueManager)
+    public void DialogueEnded(DialogueManager dialogueManager)
     {
         state = WakeUpPlayerState.leaving;
         animator.ResetTrigger("GetOutOfBed");

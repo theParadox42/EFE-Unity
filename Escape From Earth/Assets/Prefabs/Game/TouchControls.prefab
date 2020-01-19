@@ -78,6 +78,7 @@ GameObject:
   - component: {fileID: 4052571295859198120}
   - component: {fileID: 4052571295859198123}
   - component: {fileID: 4052571295859198122}
+  - component: {fileID: 174447747}
   m_Layer: 5
   m_Name: TouchControls
   m_TagString: Untagged
@@ -166,6 +167,19 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &174447747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4052571295859198125}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b1835a684d8346979dcdf241b12f6a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destroyIfMobile: 0
 --- !u!1001 &4052571296780454205
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -282,11 +296,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Fixed Joystick
-      objectReference: {fileID: 0}
-    - target: {fileID: 2929252283123773939, guid: aaa2c939c0359ac4dbce3f49e8b90252,
-        type: 3}
-      propertyPath: m_TagString
-      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 2929252285020698103, guid: aaa2c939c0359ac4dbce3f49e8b90252,
         type: 3}

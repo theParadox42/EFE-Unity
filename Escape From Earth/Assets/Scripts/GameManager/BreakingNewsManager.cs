@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BreakingNewsManager : GameManager
+public class BreakingNewsManager: GameManager
 {
 
     BreakingNewsPlayer player = null;
@@ -13,6 +13,7 @@ public class BreakingNewsManager : GameManager
 
     public override void DialogueEnded(DialogueManager dialogueManager)
     {
+        Debug.Log("Dialogue Ended");
         player.StartScene();
     }
     

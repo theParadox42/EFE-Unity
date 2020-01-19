@@ -11,7 +11,11 @@ public class DialogueManager : MonoBehaviour
     Dialogue currentDialogue;
     
     // Delegate Methods
-    [SerializeField] DialogueDelegate dialogueDelegate = null;
+    public DialogueDelegate dialogueDelegate = null;
+    [SerializeField()]
+    [DefaultFromSelf(UseEntity = true)]
+    [TypeRestriction(typeof(DialogueDelegate))]
+    private Component _movementAnimator;
     bool sentSignal = false;
 
     // TMP Component
