@@ -10,7 +10,7 @@ enum WakeUpPlayerState {
     finished
 }
 
-public class BreakingNewsPlayer: DialogueDelegate
+public class BreakingNewsPlayer: DialoguePlayer
 {
     
     // State Management

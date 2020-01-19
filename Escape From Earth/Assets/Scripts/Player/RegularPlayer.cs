@@ -7,11 +7,11 @@ public class RegularPlayer: DialoguePlayer
 
     // Movement Variables
     FixedJoystick fixedJoystick;
-    float jumpSensitivity = 0.5f;
-    float duckSensitivity = 0.4f;
-    float moveSensitivity = 0.2f;
-    bool roundX = false;
-    bool roundY = true;
+    float upSensitivity = 0.5f;
+    float downSensitivity = 0.4f;
+    float horizontalSensitivity = 0.2f;
+    bool snapX = false;
+    bool snapY = true;
 
     // Mobile detection
     bool isMobile = (new DetectMobile()).CheckMobile();
@@ -26,20 +26,55 @@ public class RegularPlayer: DialoguePlayer
     // Update is called once per frame
     void Update()
     {
-        
+        UpdateMovementControls();
     }
 
     void InitializeTouchControls() {
         Debug.Log("Initializing Touch Controls");
-        if(isMobile) {
-
+        try {
+            fixedJoystick = FindObjectOfType<FixedJoystick>();
+        } catch {
+            isMobile = false;
         }
     }
-    void UpdateControls() {
-        float horizantalMovement = 0f;
+    void UpdateMovementControls() {
+
+        // Movement variables
+        float horizontalMovement = 0f;
         float verticalMovement = 0f;
+
+        // Mobile controls
         if(isMobile) {
-            
+            horizontalMovement += fixedJoystick.Horizontal;
+            verticalMovement += fixedJoystick.Vertical;
+        }
+
+        // Keyboard/Gamecontroller Controls
+        horizontalMovement += Input.GetAxis("Horizontal");
+        verticalMovement += Input.GetAxis("Vertical");
+
+        // Constraints
+        horizontalMovement = Mathf.Clamp(horizontalMovement, -1f, 1f);
+        verticalMovement = Mathf.Clamp(verticalMovement, -1f, 1f);
+
+        // Options (Sensitivity, Rounding)
+        
+        // Horizontal
+        if(Mathf.Abs(horizontalMovement) > horizontalSensitivity) {
+            if(snapX) {
+                if(horizontalMovement > 0f) horizontalMovement = 1f;
+                if(horizontalMovement < 0f) horizontalMovement = -1f;
+            }
+            MoveHorizontally(horizontalMovement);
+        }
+
+        // Vertical
+        if(verticalMovement > upSensitivity) {
+            if(snapY) MoveUp(1f);
+            else MoveUp(verticalMovement);
+        } else if(verticalMovement < downSensitivity) {
+            if(snapY) MoveDown(1f);
+            else MoveDown(verticalMovement);
         }
     }
 
@@ -52,11 +87,8 @@ public class RegularPlayer: DialoguePlayer
         Debug.Log("No method implemented for MoveDown");
     }
 
-    void MoveRight(float howMuch) {
-        Debug.Log("No method implemented for MoveRight");
-    }
-    void MoveLeft(float howMuch) {
-        Debug.Log("No method implemented for MoveLeft");
+    void MoveHorizontally(float howMuch) {
+        Debug.Log("No method implemented for MoveHorizontally");
     }
 
     // Dialogue reciever
