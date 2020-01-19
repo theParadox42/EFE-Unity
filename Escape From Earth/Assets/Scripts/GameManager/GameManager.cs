@@ -6,8 +6,7 @@ public class GameManager: DialogueDelegate
 {
 
     // Just a general class for game managers to build off of
-
-    public virtual void DialogueEnded(DialogueManager dialogueManager)
+    public override void DialogueEnded(DialogueManager dialogueManager)
     {
         Debug.LogWarning("Dialogue ended from");
         Debug.Log("Dialogue object unused");

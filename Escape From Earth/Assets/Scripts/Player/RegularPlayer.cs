@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RegularPlayer: DetectMobile
+public class RegularPlayer: DialoguePlayer
 {
 
+    // Movement Variables
     FixedJoystick fixedJoystick;
     float jumpSensitivity = 0.5f;
     float duckSensitivity = 0.4f;
@@ -12,10 +13,13 @@ public class RegularPlayer: DetectMobile
     bool roundX = false;
     bool roundY = true;
 
+    // Mobile detection
+    bool isMobile = (new DetectMobile()).CheckMobile();
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        InitializeTouchControls();
     }
 
 
@@ -26,14 +30,15 @@ public class RegularPlayer: DetectMobile
     }
 
     void InitializeTouchControls() {
-        if(CheckMobile()) {
+        Debug.Log("Initializing Touch Controls");
+        if(isMobile) {
 
         }
     }
     void UpdateControls() {
         float horizantalMovement = 0f;
         float verticalMovement = 0f;
-        if(CheckMobile()) {
+        if(isMobile) {
             
         }
     }
@@ -55,7 +60,7 @@ public class RegularPlayer: DetectMobile
     }
 
     // Dialogue reciever
-    public void DialogueEnded(DialogueManager dialogueManager)
+    public override void DialogueEnded(DialogueManager dialogueManager)
     {
         Debug.LogWarning("No Response Created For Player", gameObject);
     }

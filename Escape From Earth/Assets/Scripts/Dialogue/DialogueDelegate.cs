@@ -5,7 +5,7 @@ using UnityEngine;
 public class DialogueDelegate : MonoBehaviour
 {
     
-    delegate void DialogueEnded(DialogueManager dialogueManager);
+    // delegate void DialogueEnded(DialogueManager dialogueManager);
 
     public virtual void DialogueEnded(DialogueManager dialogueManager)
     {
