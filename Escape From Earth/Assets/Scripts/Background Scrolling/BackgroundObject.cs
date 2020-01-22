@@ -8,16 +8,24 @@ public class BackgroundObject : MonoBehaviour
     [SerializeField] float widthMultiplyer = 1f;
     SpriteRenderer myRenderer;
 
-    private void Start() {
+    void Start() {
         myRenderer = GetComponent<SpriteRenderer>();
     }
 
     public float GetWidth() {
+        CheckRenderer();
         return myRenderer.bounds.size.x * widthMultiplyer;
     }
 
     public float GetHalfWidth() {
+        CheckRenderer();
         return myRenderer.bounds.extents.x * widthMultiplyer;
+    }
+
+    void CheckRenderer() {
+        if(myRenderer == null) {
+            myRenderer = GetComponent<SpriteRenderer>();
+        }
     }
 
 }

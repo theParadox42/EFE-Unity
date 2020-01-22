@@ -2,40 +2,69 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Collider2D))]
+[RequireComponent(typeof(Rigidbody2D))]
 public class RegularPlayer: DialoguePlayer
 {
 
-    // Movement Variables
-    FixedJoystick fixedJoystick;
-    float upSensitivity = 0.5f;
-    float downSensitivity = 0.4f;
-    float horizontalSensitivity = 0.2f;
-    bool snapX = false;
-    bool snapY = true;
+    // Components/Objects
+    protected FixedJoystick fixedJoystick;
+    protected Rigidbody2D rb;
+    protected Collider2D myCollider;
 
-    // Mobile detection
-    bool isMobile = (new DetectMobile()).CheckMobile();
+    #region Movement Config Variables
+    protected float upSensitivity = 0.5f;
+    protected float downSensitivity = 0.4f;
+    protected float horizontalSensitivity = 0.2f;
+    protected bool snapX = false;
+    protected bool snapY = true;
+    #endregion
+
+    // Mobile Control Variable
+    protected bool hasMobileControl = false;
+    protected bool isMobile = false;
+    DetectMobile detector = new DetectMobile();
+
+    // Ground Stuff
+    public bool grounded = false;
+    protected bool requiresGroundedToJump = true;
+    LayerMask groundLayers;
 
     // Start is called before the first frame update
-    void Start()
+    protected void Start()
     {
+        rb = GetComponent<Rigidbody2D>();
+        myCollider = GetComponent<Collider2D>();
+        groundLayers = LayerMask.GetMask("GroundLayers");
         InitializeTouchControls();
     }
 
 
     // Update is called once per frame
-    void Update()
+    protected void Update()
     {
         UpdateMovementControls();
+        UpdateGrounded();
     }
 
+    // Update if grounded
+    void UpdateGrounded() {
+        Vector2 extents = myCollider.bounds.extents;
+        Vector2 center = myCollider.bounds.center;
+        grounded = Physics2D.OverlapArea(
+            new Vector2(center.x + extents.x, center.y - extents.y),
+            new Vector2(center.x - extents.x, center.y - extents.y + 0.1f),
+            groundLayers);
+    }
+    
+    #region Touch Controls
     void InitializeTouchControls() {
-        Debug.Log("Initializing Touch Controls");
         try {
             fixedJoystick = FindObjectOfType<FixedJoystick>();
         } catch {
-            isMobile = false;
+            // Nothing happens here
         }
+        hasMobileControl = fixedJoystick == null ? false : true;
     }
     void UpdateMovementControls() {
 
@@ -44,7 +73,7 @@ public class RegularPlayer: DialoguePlayer
         float verticalMovement = 0f;
 
         // Mobile controls
-        if(isMobile) {
+        if(hasMobileControl) {
             horizontalMovement += fixedJoystick.Horizontal;
             verticalMovement += fixedJoystick.Vertical;
         }
@@ -70,32 +99,37 @@ public class RegularPlayer: DialoguePlayer
 
         // Vertical
         if(verticalMovement > upSensitivity) {
-            if(snapY) MoveUp(1f);
-            else MoveUp(verticalMovement);
+            if(!requiresGroundedToJump || (requiresGroundedToJump && grounded)) {
+                if (snapY) MoveUp(1f);
+                else MoveUp(verticalMovement);
+            }
         } else if(verticalMovement < downSensitivity) {
             if(snapY) MoveDown(1f);
             else MoveDown(verticalMovement);
         }
+
+        // Mobile Boolean
+        isMobile = detector.CheckMobile();
     }
 
     // Move methods
-    void MoveUp(float howMuch) {
+    protected virtual void MoveUp(float howMuch) {
         Debug.Log("No method implemented for MoveUp");
     }
 
-    void MoveDown(float howMuch) {
+    protected virtual void MoveDown(float howMuch) {
         Debug.Log("No method implemented for MoveDown");
     }
 
-    void MoveHorizontally(float howMuch) {
+    protected virtual void MoveHorizontally(float howMuch) {
         Debug.Log("No method implemented for MoveHorizontally");
     }
 
     // Dialogue reciever
     public override void DialogueEnded(DialogueManager dialogueManager)
     {
-        Debug.LogWarning("No Response Created For Player", gameObject);
+        Debug.LogWarning("No Response Created For RegularPlayer", gameObject);
     }
-
+    #endregion
 
 }

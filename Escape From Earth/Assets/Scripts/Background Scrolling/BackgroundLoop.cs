@@ -5,7 +5,7 @@ using UnityEngine;
 public class BackgroundLoop : MonoBehaviour
 {
 
-    [SerializeField] BackgroundObject[] backgroundObjects;
+    [SerializeField] BackgroundObject[] backgroundObjects = {};
     Camera mainCamera;
     Vector2 screenBounds;
     [SerializeField] float choke;
