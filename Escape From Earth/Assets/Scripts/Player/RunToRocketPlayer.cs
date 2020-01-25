@@ -5,7 +5,7 @@ using UnityEngine;
 public class RunToRocketPlayer : RegularPlayer
 {
 
-    // Rigidbody2D rigidbody;
+    bool crouching = false;
 
     // Start is called before the first frame update
     new void Start()
@@ -20,19 +20,20 @@ public class RunToRocketPlayer : RegularPlayer
     new void Update()
     {
         // Base Class update
+        crouching = false;
         base.Update();
     }
 
     protected override void MoveUp(float howMuch) {
-        rb.velocity = new Vector2(rb.velocity.x, 5f);
+        rb.velocity = new Vector2(rb.velocity.x, 10f);
     }
 
     protected override void MoveDown(float howMuch) {
-
+        crouching = true;
     }
 
     protected override void MoveHorizontally(float howMuch){ 
-
+        rb.velocity = new Vector2(howMuch * 5f, rb.velocity.y);
     }
 
 }

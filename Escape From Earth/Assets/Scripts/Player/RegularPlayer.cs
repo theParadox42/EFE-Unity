@@ -13,22 +13,25 @@ public class RegularPlayer: DialoguePlayer
     protected Collider2D myCollider;
 
     #region Movement Config Variables
+
+    // Sensitivities
     protected float upSensitivity = 0.5f;
     protected float downSensitivity = 0.4f;
     protected float horizontalSensitivity = 0.2f;
+    // Snappy
     protected bool snapX = false;
     protected bool snapY = true;
-    #endregion
-
-    // Mobile Control Variable
+    // Mobile Control Variables
     protected bool hasMobileControl = false;
     protected bool isMobile = false;
     DetectMobile detector = new DetectMobile();
-
     // Ground Stuff
     public bool grounded = false;
     protected bool requiresGroundedToJump = true;
+    // For checking groundedness
     LayerMask groundLayers;
+
+    #endregion
 
     // Start is called before the first frame update
     protected void Start()
@@ -38,7 +41,6 @@ public class RegularPlayer: DialoguePlayer
         groundLayers = LayerMask.GetMask("GroundLayers");
         InitializeTouchControls();
     }
-
 
     // Update is called once per frame
     protected void Update()
@@ -57,7 +59,10 @@ public class RegularPlayer: DialoguePlayer
             groundLayers);
     }
     
+    // Touch controls, as the line below suggests.
     #region Touch Controls
+
+    // Init/Start and Update control methods
     void InitializeTouchControls() {
         try {
             fixedJoystick = FindObjectOfType<FixedJoystick>();
