@@ -59,8 +59,8 @@ public class RegularPlayer: DialoguePlayer
             groundLayers);
     }
     
-    // Touch controls, as the line below suggests.
-    #region Touch Controls
+    // Movement controls, as the line below suggests.
+    #region Movement Controls
 
     // Init/Start and Update control methods
     void InitializeTouchControls() {
@@ -108,7 +108,7 @@ public class RegularPlayer: DialoguePlayer
                 if (snapY) MoveUp(1f);
                 else MoveUp(verticalMovement);
             }
-        } else if(verticalMovement < downSensitivity) {
+        } else if(verticalMovement < -downSensitivity) {
             if(snapY) MoveDown(1f);
             else MoveDown(verticalMovement);
         }

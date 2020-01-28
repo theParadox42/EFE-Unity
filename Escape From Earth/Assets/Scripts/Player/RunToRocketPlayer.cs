@@ -7,6 +7,8 @@ public class RunToRocketPlayer : RegularPlayer
 
     bool crouching = false;
 
+    Animator myAnimator;
+
     // Start is called before the first frame update
     new void Start()
     {
@@ -14,6 +16,7 @@ public class RunToRocketPlayer : RegularPlayer
         base.Start();
         // Do Additional Config Here
         horizontalSensitivity = 0f;
+        myAnimator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -22,6 +25,14 @@ public class RunToRocketPlayer : RegularPlayer
         // Base Class update
         crouching = false;
         base.Update();
+
+        UpdateAnimator();
+    }
+
+    void UpdateAnimator() {
+        myAnimator.SetBool("grounded", grounded);
+        myAnimator.SetFloat("speed", Mathf.Abs(rb.velocity.x));
+        myAnimator.SetBool("crouching", crouching);
     }
 
     protected override void MoveUp(float howMuch) {
@@ -29,7 +40,7 @@ public class RunToRocketPlayer : RegularPlayer
     }
 
     protected override void MoveDown(float howMuch) {
-        crouching = true;
+        crouching = grounded;
     }
 
     protected override void MoveHorizontally(float howMuch){ 
